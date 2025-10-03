@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Bhagwan Builders - Properties in East Delhi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Optional: Add a custom font or minor style adjustments here */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* A simple animation for cards on hover */
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+    </style>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Teko:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800" style="font-family: 'Teko', sans-serif;">
+                <i class="fas fa-building text-blue-600"></i>
+                Shree Bhagwan Builders
+            </a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#properties" class="text-gray-600 hover:text-blue-600">Properties</a>
+                <a href="#locations" class="text-gray-600 hover:text-blue-600">Locations</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600">Contact Us</a>
+                <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Enquire Now</a>
+            </div>
+            <div class="md:hidden">
+                <button class="text-gray-800 focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="relative bg-cover bg-center h-[60vh] text-white" style="background-image: url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1992&auto=format&fit=crop');">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="container mx-auto px-6 h-full flex flex-col justify-center items-center text-center relative z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight" style="font-family: 'Teko', sans-serif;">Find Your Dream Property in East Delhi</h1>
+                <p class="mt-4 text-lg md:text-xl max-w-2xl">Your trusted partner for residential, commercial, and rental properties in the heart of the city.</p>
+                <a href="#properties" class="mt-8 bg-white text-blue-600 font-bold py-3 px-8 rounded-md hover:bg-gray-200 transition-transform transform hover:scale-105">View Listings</a>
+            </div>
+        </section>
+
+        <section id="properties" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Featured Properties</h2>
+                    <p class="text-gray-600 mt-2">Explore our curated list of available properties.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden property-card transition-all duration-300">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2070&auto=format&fit=crop" alt="Luxury Apartment" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200 last:mr-0 mr-1">
+                                Residential Flat
+                            </span>
+                            <h3 class="font-bold text-xl mt-3 mb-2">3BHK Luxury Apartment</h3>
+                            <p class="text-gray-600 text-sm mb-4"><i class="fas fa-map-marker-alt mr-2"></i>Patparganj, I.P. Extension</p>
+                            <p class="text-gray-700">A spacious and modern flat with all amenities, perfect for families. Excellent connectivity and prime location.</p>
+                            <a href="#contact" class="mt-4 inline-block text-blue-600 font-semibold hover:underline">Enquire for Price</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden property-card transition-all duration-300">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop" alt="Commercial Space" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200 last:mr-0 mr-1">
+                                Commercial Building
+                            </span>
+                            <h3 class="font-bold text-xl mt-3 mb-2">Prime Commercial Office Space</h3>
+                            <p class="text-gray-600 text-sm mb-4"><i class="fas fa-map-marker-alt mr-2"></i>Madhu Vihar, Delhi</p>
+                            <p class="text-gray-700">Ideal for startups and established businesses. Main road facing property with high footfall.</p>
+                            <a href="#contact" class="mt-4 inline-block text-blue-600 font-semibold hover:underline">Enquire for Price</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden property-card transition-all duration-300">
+                        <img src="https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=2067&auto=format&fit=crop" alt="Rental Apartment" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                             <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-yellow-800 bg-yellow-300 last:mr-0 mr-1">
+                                For Rent
+                            </span>
+                            <h3 class="font-bold text-xl mt-3 mb-2">Furnished 2BHK Suite</h3>
+                            <p class="text-gray-600 text-sm mb-4"><i class="fas fa-map-marker-alt mr-2"></i>West Vinod Nagar, Delhi</p>
+                            <p class="text-gray-700">Ready-to-move-in furnished apartment available for long-term rental. Close to metro station.</p>
+                             <a href="#contact" class="mt-4 inline-block text-blue-600 font-semibold hover:underline">Enquire for Rental Price</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="locations" class="py-16">
+             <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Primary Locations</h2>
+                 <p class="text-gray-600 mb-8 max-w-2xl mx-auto">We specialize in properties across the most sought-after neighborhoods in East Delhi.</p>
+                 <div class="flex flex-wrap justify-center gap-3">
+                     <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-4 py-2 rounded-full">Patparganj</span>
+                     <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-4 py-2 rounded-full">I.P. Extension</span>
+                     <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-4 py-2 rounded-full">Madhu Vihar</span>
+                     <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-4 py-2 rounded-full">West Vinod Nagar</span>
+                     <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-4 py-2 rounded-full">East Vinod Nagar</span>
+                     <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-4 py-2 rounded-full">Pandav Nagar</span>
+                 </div>
+             </div>
+        </section>
+
+        <section id="contact" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Have a Property in Mind?</h2>
+                    <p class="text-gray-600 mt-2">Fill out the form below and our team will get back to you shortly.</p>
+                </div>
+                
+                <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                    <form action="#" method="POST">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., John Doe" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="number" class="block text-gray-700 font-medium mb-2">Contact Number</label>
+                            <input type="tel" id="number" name="number" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., 9876543210" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="budget" class="block text-gray-700 font-medium mb-2">Your Budget (Optional)</label>
+                            <input type="text" id="budget" name="budget" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., 50 Lakhs - 75 Lakhs">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-md hover:bg-blue-700 transition-colors">Submit Enquiry</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-bold mb-4" style="font-family: 'Teko', sans-serif;">Shree Bhagwan Builders</h3>
+                    <p class="text-gray-400">Your premier real estate partner in East Delhi, dedicated to helping you find the perfect property.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>
+                            <i class="fas fa-map-marker-alt fa-fw mr-2"></i>
+                            F-62, West Vinod Nagar, Delhi-92
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt fa-fw mr-2"></i>
+                            +91 9811207560
+                        </li>
+                        <li>
+                           <i class="fas fa-mobile-alt fa-fw mr-2"></i>
+                            +91 8700916904
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#properties" class="text-gray-300 hover:text-white">Properties</a></li>
+                        <li><a href="#locations" class="text-gray-300 hover:text-white">Locations</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white">Enquire Now</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 Shree Bhagwan Builders. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
