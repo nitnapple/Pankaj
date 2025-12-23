@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poonam Enterprises | Authentic Indian Spices & Thekua</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            600: '#d97706',
+                            800: '#92400e',
+                        },
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            800: '#292524',
+                            900: '#1c1917',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Utilities */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-stone-50 font-sans text-stone-800 selection:bg-amber-200 selection:text-amber-900">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-2 cursor-pointer" onclick="scrollToSection('home')">
+                <div class="w-8 h-8 bg-amber-600 rounded-tr-xl rounded-bl-xl rotate-45 transform transition-transform hover:rotate-90"></div>
+                <span class="text-2xl font-serif font-bold tracking-tight text-stone-900">
+                    Poonam<span class="text-amber-600">.</span>
+                </span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <button onclick="scrollToSection('home')" class="text-sm font-medium hover:text-amber-600 transition-colors">Home</button>
+                <button onclick="scrollToSection('shop')" class="text-sm font-medium hover:text-amber-600 transition-colors">Shop</button>
+                <button onclick="scrollToSection('about')" class="text-sm font-medium hover:text-amber-600 transition-colors">About</button>
+                <button onclick="toggleCart()" class="relative p-2 hover:bg-stone-100 rounded-full transition-colors group">
+                    <i class="ph ph-shopping-bag text-xl text-stone-700 group-hover:text-amber-600"></i>
+                    <span id="cart-count" class="absolute top-0 right-0 w-4 h-4 bg-amber-600 text-white text-[10px] font-bold flex items-center justify-center rounded-full opacity-0 transition-opacity duration-300">0</span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center gap-4">
+                <button onclick="toggleCart()" class="relative p-1">
+                    <i class="ph ph-shopping-bag text-2xl text-stone-800"></i>
+                    <span id="mobile-cart-count" class="absolute -top-1 -right-1 w-4 h-4 bg-amber-600 text-white text-[10px] font-bold flex items-center justify-center rounded-full opacity-0 transition-opacity duration-300">0</span>
+                </button>
+                <button onclick="toggleMobileMenu()" class="p-1">
+                    <i id="mobile-menu-icon" class="ph ph-list text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-white pt-24 px-6 md:hidden hidden opacity-0 transition-opacity duration-300">
+        <div class="flex flex-col space-y-6 text-xl font-serif">
+            <button onclick="mobileNavClick('home')" class="text-left border-b border-stone-100 pb-4">Home</button>
+            <button onclick="mobileNavClick('shop')" class="text-left border-b border-stone-100 pb-4">Shop</button>
+            <button onclick="mobileNavClick('about')" class="text-left border-b border-stone-100 pb-4">About</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-amber-50 -z-10 rounded-bl-[100px] opacity-60"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8 animate-slide-up">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-sm font-medium">
+                        <i class="ph-fill ph-star text-amber-600"></i>
+                        <span>Premium Quality Authenticity</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-serif font-bold text-stone-900 leading-[1.1]">
+                        The Essence of <br />
+                        <span class="text-amber-600 italic">Indian Kitchen</span>
+                    </h1>
+                    <p class="text-lg text-stone-600 max-w-md leading-relaxed">
+                        Experience the purest aroma and taste with Poonam Enterprises. From our home to yours, handcrafted spices and traditional Thekua.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="scrollToSection('shop')" class="px-8 py-4 bg-stone-900 text-white rounded-full font-medium hover:bg-stone-800 transition-all hover:shadow-lg flex items-center gap-2 group">
+                            Shop Collection <i class="ph ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                        <button onclick="scrollToSection('about')" class="px-8 py-4 border border-stone-200 bg-white text-stone-900 rounded-full font-medium hover:bg-stone-50 transition-colors">
+                            Our Story
+                        </button>
+                    </div>
+                </div>
+                <div class="relative group perspective-1000">
+                    <div class="absolute inset-0 bg-amber-200 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+                    <img 
+                        src="https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&q=80&w=1000" 
+                        alt="Spices Platter" 
+                        class="relative rounded-3xl shadow-2xl transform transition-transform duration-700 hover:scale-[1.02] hover:rotate-1 object-cover h-[500px] w-full animate-float"
+                    />
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl max-w-xs hidden md:block z-10">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-600">
+                                <i class="ph-fill ph-star text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-lg">5 Star Rated</p>
+                                <p class="text-sm text-stone-500">Trusted by 1000+ Families</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-4xl font-serif font-bold text-stone-900 mb-4">Curated for Your Kitchen</h2>
+                <p class="text-stone-600">Authentic flavors sourced directly from the finest farms.</p>
+                
+                <div id="category-filters" class="flex flex-wrap justify-center gap-2 mt-8">
+                    <!-- Categories injected by JS -->
+                </div>
+            </div>
+
+            <div id="product-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Products injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-stone-900 text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-serif font-bold mb-6">Poonam's Promise of Purity</h2>
+                    <div class="space-y-6 text-stone-300 leading-relaxed">
+                        <p>
+                            At Poonam Enterprises, we believe that the soul of Indian cooking lies in its spices. Founded with a vision to bring farm-fresh purity to your dining table, we meticulously select every grain.
+                        </p>
+                        <p>
+                            Our signature <strong>Thekua</strong> is made using an age-old family recipe, ensuring that every bite takes you back to the festive roots of Bihar and UP. No preservatives, just pure love and tradition.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-8 mt-12">
+                        <div>
+                            <h4 class="text-2xl font-bold text-amber-500 mb-2">100%</h4>
+                            <p class="text-sm text-stone-400">Natural Ingredients</p>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-amber-500 mb-2">0%</h4>
+                            <p class="text-sm text-stone-400">Preservatives</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 border-2 border-amber-600/30 rounded-3xl transform rotate-6"></div>
+                    <div class="relative bg-stone-800 rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-300">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-stone-700/50 p-4 rounded-xl">
+                                <div class="w-10 h-10 bg-amber-600 rounded-lg flex items-center justify-center mb-4">
+                                    <i class="ph-fill ph-star text-white text-xl"></i>
+                                </div>
+                                <h3 class="font-bold mb-1">Premium Grade</h3>
+                                <p class="text-xs text-stone-400">Hand-picked spices</p>
+                            </div>
+                            <div class="bg-stone-700/50 p-4 rounded-xl">
+                                <div class="w-10 h-10 bg-amber-600 rounded-lg flex items-center justify-center mb-4">
+                                    <i class="ph-fill ph-map-pin text-white text-xl"></i>
+                                </div>
+                                <h3 class="font-bold mb-1">Locally Sourced</h3>
+                                <p class="text-xs text-stone-400">Direct from farmers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-24 pb-12 border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-6 h-6 bg-amber-600 rounded-tr-lg rounded-bl-lg rotate-45"></div>
+                        <span class="text-xl font-serif font-bold">Poonam.</span>
+                    </div>
+                    <p class="text-stone-500 text-sm leading-relaxed mb-6">
+                        Bringing the authentic taste of India to your kitchen. Pure spices, delicious Thekua, and a legacy of trust.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-600 hover:bg-amber-600 hover:text-white transition-colors"><i class="ph-fill ph-facebook-logo"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-600 hover:bg-amber-600 hover:text-white transition-colors"><i class="ph-fill ph-instagram-logo"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-600 hover:bg-amber-600 hover:text-white transition-colors"><i class="ph-fill ph-twitter-logo"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-stone-900 mb-6">Quick Links</h4>
+                    <ul class="space-y-4 text-sm text-stone-500">
+                        <li><a href="#" class="hover:text-amber-600 transition-colors">Our Story</a></li>
+                        <li><a href="#" class="hover:text-amber-600 transition-colors">Shop All</a></li>
+                        <li><a href="#" class="hover:text-amber-600 transition-colors">Wholesale</a></li>
+                        <li><a href="#" class="hover:text-amber-600 transition-colors">Recipes</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-stone-900 mb-6">Products</h4>
+                    <ul class="space-y-4 text-sm text-stone-500">
+                        <li><a href="#" class="hover:text-amber-600 transition-colors">Garam Masala</a></li>
+                        <li><a href="#" class="hover:text-amber-600 transition-colors">Red Chilli</a></li>
+                        <li><a href="#" class="hover:text-amber-600 transition-colors">Turmeric</a></li>
+                        <li><a href="#" class="hover:text-amber-600 transition-colors">Thekua</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-stone-900 mb-6">Contact Us</h4>
+                    <ul class="space-y-4 text-sm text-stone-500">
+                        <li class="flex items-center gap-3">
+                            <i class="ph ph-phone text-amber-600"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="ph ph-envelope text-amber-600"></i>
+                            <span>hello@poonam-ent.com</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="ph ph-map-pin text-amber-600"></i>
+                            <span>Sector 62, Noida, UP, India</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-stone-100 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-stone-400">© 2024 Poonam Enterprises. All rights reserved.</p>
+                <div class="flex gap-6 text-xs text-stone-400">
+                    <a href="#" class="hover:text-stone-600">Privacy Policy</a>
+                    <a href="#" class="hover:text-stone-600">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed inset-0 z-[60] hidden">
+        <div class="absolute inset-0 bg-black/20 backdrop-blur-sm" onclick="toggleCart()"></div>
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl transform transition-transform duration-300 flex flex-col slide-in-right">
+            <div class="p-6 border-b border-stone-100 flex items-center justify-between">
+                <h2 class="text-xl font-serif font-bold text-stone-900">Your Cart</h2>
+                <button onclick="toggleCart()" class="p-2 hover:bg-stone-100 rounded-full transition-colors">
+                    <i class="ph ph-x text-xl text-stone-500"></i>
+                </button>
+            </div>
+
+            <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-6">
+                <!-- Cart items injected by JS -->
+            </div>
+
+            <div id="cart-footer" class="p-6 border-t border-stone-100 bg-stone-50">
+                <!-- Total and checkout button injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Data ---
+        const products = [
+            {
+                id: 1,
+                name: "Premium Garam Masala",
+                price: 250,
+                unit: "200g",
+                image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=800",
+                description: "A proprietary blend of 12 authentic aromatic spices roasted to perfection.",
+                category: "Blends"
+            },
+            {
+                id: 2,
+                name: "Kashmiri Laal Mirch",
+                price: 180,
+                unit: "200g",
+                image: "https://images.unsplash.com/photo-1624823180235-5153fb309c48?auto=format&fit=crop&q=80&w=800",
+                description: "Vibrant red color with a mild heat, perfect for rich curries.",
+                category: "Spices"
+            },
+            {
+                id: 3,
+                name: "Dhaniya Powder",
+                price: 120,
+                unit: "200g",
+                image: "https://images.unsplash.com/photo-1599909692483-346765275e3a?auto=format&fit=crop&q=80&w=800",
+                description: "Freshly ground coriander seeds for a citrusy, nutty flavor.",
+                category: "Spices"
+            },
+            {
+                id: 4,
+                name: "Golden Haldi",
+                price: 140,
+                unit: "200g",
+                image: "https://images.unsplash.com/photo-1615485500704-8e99099928b3?auto=format&fit=crop&q=80&w=800",
+                description: "High curcumin turmeric powder sourced from the finest farms.",
+                category: "Spices"
+            },
+            {
+                id: 5,
+                name: "Traditional Thekua",
+                price: 300,
+                unit: "500g",
+                image: "https://t4.ftcdn.net/jpg/04/53/78/35/360_F_453783515_bJg1g2yJ2yJ2yJ2y.jpg", 
+                fallbackImage: "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&q=80&w=800",
+                description: "Authentic, crispy whole wheat cookies deep-fried in ghee. A festive favorite.",
+                category: "Sweets"
+            }
+        ];
+
+        const categories = ['All', 'Spices', 'Blends', 'Sweets'];
+
+        // --- State ---
+        let cart = [];
+        let activeCategory = 'All';
+
+        // --- Functions ---
+
+        // Render Categories
+        function renderCategories() {
+            const container = document.getElementById('category-filters');
+            container.innerHTML = categories.map(cat => `
+                <button
+                    onclick="setCategory('${cat}')"
+                    class="px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                        activeCategory === cat 
+                        ? 'bg-stone-900 text-white shadow-md' 
+                        : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                    }"
+                >
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        function setCategory(cat) {
+            activeCategory = cat;
+            renderCategories();
+            renderProducts();
+        }
+
+        // Render Products
+        function renderProducts() {
+            const container = document.getElementById('product-grid');
+            const filtered = activeCategory === 'All' 
+                ? products 
+                : products.filter(p => p.category === activeCategory);
+
+            container.innerHTML = filtered.map(product => `
+                <div class="group relative bg-white rounded-2xl border border-stone-100 hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <div class="relative aspect-[4/3] overflow-hidden bg-stone-100">
+                        <img 
+                            src="${product.image}" 
+                            alt="${product.name}"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                            onerror="this.src='${product.fallbackImage || 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=800'}'"
+                        />
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-stone-900">
+                            ${product.category}
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-stone-900 group-hover:text-amber-600 transition-colors">${product.name}</h3>
+                            <span class="text-lg font-serif font-bold text-stone-900">₹${product.price}</span>
+                        </div>
+                        <p class="text-sm text-stone-500 mb-4 line-clamp-2">${product.description}</p>
+                        
+                        <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                            <span class="text-sm font-medium text-stone-400">${product.unit}</span>
+                            <button 
+                                onclick="addToCart(${product.id})"
+                                class="px-4 py-2 bg-stone-900 text-white rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors flex items-center gap-2"
+                            >
+                                Add to Cart <i class="ph-bold ph-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Cart Logic
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            renderCart();
+            updateCartCount();
+            toggleCart(true); // Open cart
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            renderCart();
+            updateCartCount();
+        }
+
+        function updateQuantity(productId, change) {
+            cart = cart.map(item => {
+                if (item.id === productId) {
+                    const newQty = item.quantity + change;
+                    if (newQty < 1) return item; // or remove if < 1
+                    return { ...item, quantity: newQty };
+                }
+                return item;
+            });
+            renderCart();
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            const badges = [document.getElementById('cart-count'), document.getElementById('mobile-cart-count')];
+            
+            badges.forEach(badge => {
+                badge.innerText = count;
+                if (count > 0) {
+                    badge.classList.remove('opacity-0');
+                } else {
+                    badge.classList.add('opacity-0');
+                }
+            });
+        }
+
+        function renderCart() {
+            const itemsContainer = document.getElementById('cart-items');
+            const footerContainer = document.getElementById('cart-footer');
+            
+            if (cart.length === 0) {
+                itemsContainer.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-center space-y-4">
+                        <div class="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center">
+                            <i class="ph ph-shopping-bag text-3xl text-stone-400"></i>
+                        </div>
+                        <p class="text-stone-500">Your cart is currently empty.</p>
+                        <button onclick="toggleCart(false)" class="text-amber-600 font-medium hover:underline">Start Shopping</button>
+                    </div>
+                `;
+                footerContainer.innerHTML = '';
+                footerContainer.classList.add('hidden');
+                return;
+            }
+
+            footerContainer.classList.remove('hidden');
+            
+            itemsContainer.innerHTML = cart.map(item => `
+                <div class="flex gap-4">
+                    <img src="${item.image}" alt="${item.name}" class="w-20 h-20 rounded-lg object-cover bg-stone-100">
+                    <div class="flex-1">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-bold text-stone-900 line-clamp-1">${item.name}</h3>
+                            <span class="font-bold text-sm">₹${item.price * item.quantity}</span>
+                        </div>
+                        <p class="text-xs text-stone-500 mb-3">${item.unit}</p>
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center border border-stone-200 rounded-lg overflow-hidden">
+                                <button onclick="updateQuantity(${item.id}, -1)" class="w-8 h-8 flex items-center justify-center hover:bg-stone-50 text-stone-600">-</button>
+                                <span class="w-8 h-8 flex items-center justify-center text-sm font-medium">${item.quantity}</span>
+                                <button onclick="updateQuantity(${item.id}, 1)" class="w-8 h-8 flex items-center justify-center hover:bg-stone-50 text-stone-600">+</button>
+                            </div>
+                            <button onclick="removeFromCart(${item.id})" class="text-xs text-red-500 hover:text-red-700 underline">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            footerContainer.innerHTML = `
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-stone-600">Subtotal</span>
+                    <span class="text-xl font-bold text-stone-900">₹${total}</span>
+                </div>
+                <button class="w-full py-4 bg-stone-900 text-white rounded-xl font-bold hover:bg-stone-800 transition-colors shadow-lg">Checkout Now</button>
+                <p class="text-center text-xs text-stone-400 mt-4">Shipping calculated at checkout</p>
+            `;
+        }
+
+        // --- UI Interactions ---
+
+        function toggleCart(forceOpen = null) {
+            const sidebar = document.getElementById('cart-sidebar');
+            const isOpen = forceOpen !== null ? forceOpen : sidebar.classList.contains('hidden');
+            
+            if (isOpen) {
+                sidebar.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('hidden');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                // slight delay for opacity transition to work
+                setTimeout(() => menu.classList.remove('opacity-0'), 10);
+                icon.classList.remove('ph-list');
+                icon.classList.add('ph-x');
+            } else {
+                menu.classList.add('opacity-0');
+                setTimeout(() => menu.classList.add('hidden'), 300);
+                icon.classList.remove('ph-x');
+                icon.classList.add('ph-list');
+            }
+        }
+
+        function mobileNavClick(sectionId) {
+            scrollToSection(sectionId);
+            toggleMobileMenu();
+        }
+
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Scroll listener for navbar styling
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('glass-nav', 'py-4');
+                nav.classList.remove('bg-transparent', 'py-6');
+            } else {
+                nav.classList.remove('glass-nav', 'py-4');
+                nav.classList.add('bg-transparent', 'py-6');
+            }
+        });
+
+        // Initialize
+        renderCategories();
+        renderProducts();
+        renderCart();
+
+    </script>
+</body>
+</html>
